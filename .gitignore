@@ -1,0 +1,6 @@
+.*
+!.gitignore
+bin/
+*.class
+Tmp.java
+TestSomething.java
