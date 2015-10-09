@@ -1,4 +1,4 @@
-package ru.dendevjv.dsalgjavamg.ch03fundamental;
+package ru.dendevjv.dsalgjavamg.ch03fundamental.p1cipher;
 
 /**
  * My naive attempt to implement Caesar Cipher.

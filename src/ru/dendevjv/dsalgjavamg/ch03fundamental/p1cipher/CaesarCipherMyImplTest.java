@@ -1,4 +1,4 @@
-package ru.dendevjv.dsalgjavamg.ch03fundamental;
+package ru.dendevjv.dsalgjavamg.ch03fundamental.p1cipher;
 
 import static org.junit.Assert.*;
 

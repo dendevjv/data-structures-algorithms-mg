@@ -1,4 +1,4 @@
-package ru.dendevjv.dsalgjavamg.ch03fundamental;
+package ru.dendevjv.dsalgjavamg.ch03fundamental.p1cipher;
 
 /**
  * Class for doing encryption ad decryption using the Caesar Cipher.
