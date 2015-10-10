@@ -1,16 +1,16 @@
-package ru.dendevjv.dsalgjavamg.ch03fundamental.p2singlylinked;
+package ru.dendevjv.dsalgjavamg.ch03fundamental.p4doublylinked;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class SinglyLinkedListTest {
-    private SinglyLinkedList<Integer> list;
+public class DoublyLinkedListTest {
+    private DoublyLinkedList<Integer> list;
 
     @Before
     public void setUp() throws Exception {
-        list = new SinglyLinkedList<>();
+        list = new DoublyLinkedList<>();
     }
 
     @Test
@@ -82,29 +82,18 @@ public class SinglyLinkedListTest {
         assertEquals(Integer.valueOf(4), list.removeFirst());
         assertEquals(0, list.getSize());
     }
-
+    
     @Test
-    public void testEquals() {
-        SinglyLinkedList<Integer> list2 = new SinglyLinkedList<>();
-        for (int i = 0; i < 3; i++) {
-            list.addFirst(i);   
-            list2.addFirst(i);  
-        }
-        assertEquals(list, list2);
-        assertEquals(list2, list);
-        
-        assertFalse(list.equals(null));
-        assertTrue(list.equals(list));
-        
-        list2.removeFirst();    
-        assertFalse(list.equals(list2));
-        
-        list.removeFirst();     
-        assertTrue(list.equals(list2));
-        
-        list.addLast(44);
-        list2.addLast(33);
-        assertEquals(list.getSize(), list2.getSize());
-        assertFalse(list.equals(list2));
+    public void testRemoveLast() {
+        list.addFirst(1);    
+        list.addLast(2);
+        list.addFirst(3);
+        list.addLast(4);    // 3 1 2 4
+        assertEquals(4, list.getSize());
+        assertEquals(Integer.valueOf(4), list.removeLast());
+        assertEquals(Integer.valueOf(2), list.removeLast());
+        assertEquals(Integer.valueOf(1), list.removeLast());
+        assertEquals(Integer.valueOf(3), list.removeLast());
+        assertEquals(0, list.getSize());
     }
 }

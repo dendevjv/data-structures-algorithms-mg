@@ -1,0 +1,66 @@
+package ru.dendevjv.dsalgjavamg.ch03fundamental.p4doublylinked;
+
+import ru.dendevjv.dsalgjavamg.ch03fundamental.AbstractDoublyLinkedList;
+
+public class DoublyLinkedList <E> extends AbstractDoublyLinkedList <E> {
+
+    private Node<E> header;
+    private Node<E> trailer;
+  
+    DoublyLinkedList() {
+        header = new Node<E>(null);
+        trailer = new Node<E>(null);
+        header.setNext(trailer);
+        trailer.setPrev(header);
+    }
+
+    @Override
+    public E first() {
+        if (isEmpty()) return null;
+        return header.getNext().getElement();
+    }
+
+    @Override
+    public E last() {
+        if (isEmpty()) return null;
+        return trailer.getPrev().getElement();
+    }
+
+    @Override
+    public void addFirst(E e) {
+        addBetween(e, header, header.getNext());
+    }
+
+    @Override
+    public void addLast(E e) {
+        addBetween(e, trailer.getPrev(), trailer);
+    }
+
+    @Override
+    public E removeFirst() {
+        if (isEmpty()) return null;
+        return remove(header.getNext());
+    }
+ 
+    @Override
+    public E removeLast() {
+        if (isEmpty()) return null;
+        return remove(trailer.getPrev());
+    }
+    
+    private void addBetween(E e, Node<E> predecessor, Node<E> successor) {
+        Node<E> node = new Node<>(e, successor, predecessor);
+        successor.setPrev(node);
+        predecessor.setNext(node);
+        size++;
+    }
+    
+    private E remove(Node<E> node) {
+        Node<E> predecessor = node.getPrev();
+        Node<E> successor = node.getNext();
+        predecessor.setNext(successor);
+        successor.setPrev(predecessor);
+        size--;
+        return node.getElement();
+    }
+}

@@ -1,34 +1,15 @@
 package ru.dendevjv.dsalgjavamg.ch03fundamental.p3circularly;
 
-public class CircularlyLinkedList <E> {
-    
-    /**
-     * Nested node class.
-     */
-    private static class Node <E> {
-        private E element;
-        private Node <E> next;
-        
-        private Node(E element) {
-            this.element = element;
-        }
-        
-        private E getElement() { return element; }
-        
-        private Node<E> getNext() { return next; }
-        
-        private void setNext(Node<E> node) { next = node; }
-    }
+import java.util.Iterator;
+
+import ru.dendevjv.dsalgjavamg.ch03fundamental.AbstractSynglyLinkedList;
+
+public class CircularlyLinkedList <E> extends AbstractSynglyLinkedList <E> {
     
     private Node <E> tail = null;
-    private int size = 0;
     
     public CircularlyLinkedList() {}
 
-    public int getSize() { return size; }
-    
-    public boolean isEmpty() { return size == 0; }
-    
     public E first() {
         if (isEmpty()) {
             return null;
@@ -85,5 +66,10 @@ public class CircularlyLinkedList <E> {
         tail.setNext(first.getNext());
         size--;
         return answer;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return createIterator(tail.getNext());
     }
 }
