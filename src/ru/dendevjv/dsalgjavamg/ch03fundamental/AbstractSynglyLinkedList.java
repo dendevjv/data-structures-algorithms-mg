@@ -58,6 +58,22 @@ public abstract class AbstractSynglyLinkedList <E> extends  AbstractLinkedList <
     
     @Override
     public abstract Iterator<E> iterator();
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        Iterator<E> it = iterator();
+        if (it.hasNext()) {
+            sb.append(it.next());
+        }
+        while (it.hasNext()) {
+            sb.append(", ");
+            sb.append(it.next());
+        }
+        sb.append(']');
+        return sb.toString();
+    }
 
     @Override
     public boolean equals(Object obj) {

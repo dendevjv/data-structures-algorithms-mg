@@ -107,4 +107,29 @@ public class SinglyLinkedListTest {
         assertEquals(list.getSize(), list2.getSize());
         assertFalse(list.equals(list2));
     }
+    
+    @Test
+    public void testClone() {
+        class Data {
+            private String message;
+            Data(String msg) {
+                message = msg;
+            }
+            @Override
+            public String toString() {
+                return "\"" + message + "\"";
+            }
+        }
+        
+        SinglyLinkedList<Data> list1 = new SinglyLinkedList<>();
+        for (int i = 0; i < 3; i++) {
+            list1.addFirst(new Data("Data" + i));   
+        }
+        
+        @SuppressWarnings("unchecked")
+        SinglyLinkedList<Data> list2 = (SinglyLinkedList<Data>)list1.clone();
+        assertEquals(list1, list2);
+        assertEquals(list1.first(), list2.first());
+        assertEquals(list1.last(), list2.last());
+    }
 }
