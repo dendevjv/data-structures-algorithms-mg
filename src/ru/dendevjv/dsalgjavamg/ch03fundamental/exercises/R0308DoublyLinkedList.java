@@ -1,15 +1,21 @@
-package ru.dendevjv.dsalgjavamg.ch03fundamental.p4doublylinked;
+/*
+    R-3.8 Describe a method for finding the middle node of a doubly linked list with header
+    and trailer sentinels by “link hopping,” and without relying on explicit knowledge
+    of the size of the list. In the case of an even number of nodes, report the node
+    slightly left of center as the “middle.” What is the running time of this method?
+ */
+package ru.dendevjv.dsalgjavamg.ch03fundamental.exercises;
 
 import java.util.Iterator;
 
 import ru.dendevjv.dsalgjavamg.ch03fundamental.AbstractDoublyLinkedList;
 
-public class DoublyLinkedList <E> extends AbstractDoublyLinkedList <E> {
+public class R0308DoublyLinkedList<E> extends AbstractDoublyLinkedList <E> {
 
     private Node<E> header;
     private Node<E> trailer;
   
-    DoublyLinkedList() {
+    R0308DoublyLinkedList() {
         header = new Node<E>(null);
         trailer = new Node<E>(null);
         header.setNext(trailer);
@@ -65,9 +71,38 @@ public class DoublyLinkedList <E> extends AbstractDoublyLinkedList <E> {
         size--;
         return node.getElement();
     }
-
+    
     @Override
     public Iterator<E> iterator() {
         return new DoubleyLinkedListIterator<E>(header.getNext());
     }
+    
+    public E getMiddle() {
+        Node<E> leftNode = header;
+        Node<E> rightNode = trailer;
+        while (leftNode != rightNode) {
+            rightNode = rightNode.getPrev();
+            if (leftNode == rightNode) {
+                break;
+            }
+            leftNode = leftNode.getNext();
+        }
+        return leftNode.getElement();
+    }
+    
+    public static void main(String[] args) {
+        R0308DoublyLinkedList<String> list = new R0308DoublyLinkedList<>();
+        System.out.println(list);
+        System.out.println("middle: " + list.getMiddle());
+        list.addFirst("Four");
+        list.addFirst("Three");
+        list.addFirst("Two");
+        System.out.println(list);
+        System.out.println("middle: " + list.getMiddle());
+        
+        list.addFirst("One");
+        System.out.println(list);
+        System.out.println("middle: " + list.getMiddle());
+    }
 }
+

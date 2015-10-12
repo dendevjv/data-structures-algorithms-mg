@@ -81,6 +81,11 @@ public class SinglyLinkedListTest {
         assertEquals(Integer.valueOf(2), list.removeFirst());
         assertEquals(Integer.valueOf(4), list.removeFirst());
         assertEquals(0, list.getSize());
+        
+        assertNull(list.last());
+        
+        list.addLast(5);
+        assertEquals(Integer.valueOf(5), list.first());
     }
 
     @Test

@@ -1,7 +1,9 @@
 package ru.dendevjv.dsalgjavamg.ch03fundamental;
 
+import java.util.Iterator;
 
-public abstract class AbstractDoublyLinkedList <E> extends AbstractLinkedList <E> {
+public abstract class AbstractDoublyLinkedList <E> extends AbstractLinkedList <E>
+        implements Iterable<E> {
     /**
      * Nested node class.
      */
@@ -31,5 +33,50 @@ public abstract class AbstractDoublyLinkedList <E> extends AbstractLinkedList <E
         public void setPrev(Node<E> node) { previous = node; }
     }
     
+    protected class DoubleyLinkedListIterator<T extends E> implements Iterator<E> {
+        private Node<T> current;
+        
+        public DoubleyLinkedListIterator(Node<T> currentNode) {
+            current = currentNode;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null && current.getNext() != null;
+        }
+
+        @Override
+        public E next() {
+            E element = current.getElement();
+            current = current.getNext();
+            return element;
+        }
+
+        @Override
+        public void remove() {
+            // does nothing
+        }
+        
+    }
+    
     public abstract E removeLast();
+    
+    @Override
+    public abstract Iterator<E> iterator();
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        Iterator<E> it = iterator();
+        if (it.hasNext()) {
+            sb.append(it.next());
+        }
+        while (it.hasNext()) {
+            sb.append(", ");
+            sb.append(it.next());
+        }
+        sb.append(']');
+        return sb.toString();
+    }
 }

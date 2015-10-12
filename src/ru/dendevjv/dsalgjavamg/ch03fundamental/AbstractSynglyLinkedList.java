@@ -35,7 +35,7 @@ public abstract class AbstractSynglyLinkedList <E> extends  AbstractLinkedList <
 
         @Override
         public boolean hasNext() {
-            return current != null && current.getNext() != null;
+            return current != null;
         }
 
         @Override
