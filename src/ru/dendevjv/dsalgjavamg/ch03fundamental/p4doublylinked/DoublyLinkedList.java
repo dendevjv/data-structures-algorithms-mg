@@ -9,7 +9,7 @@ public class DoublyLinkedList <E> extends AbstractDoublyLinkedList <E> {
     private Node<E> header;
     private Node<E> trailer;
   
-    DoublyLinkedList() {
+    public DoublyLinkedList() {
         header = new Node<E>(null);
         trailer = new Node<E>(null);
         header.setNext(trailer);

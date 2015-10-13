@@ -1,6 +1,7 @@
 package ru.dendevjv.dsalgjavamg.ch03fundamental;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 public abstract class AbstractDoublyLinkedList <E> extends AbstractLinkedList <E>
         implements Iterable<E> {
@@ -63,6 +64,32 @@ public abstract class AbstractDoublyLinkedList <E> extends AbstractLinkedList <E
     
     @Override
     public abstract Iterator<E> iterator();
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        @SuppressWarnings("unchecked")
+        AbstractDoublyLinkedList <E> other = (AbstractDoublyLinkedList <E>) obj;
+        if (getSize() != other.getSize()) {
+            return false;
+        }
+        Iterator<E> i1 = iterator();
+        Iterator<E> i2 = other.iterator();
+        for (int i = 0; i < size; i++) {
+            if (!i1.hasNext() || !i2.hasNext()) {
+                return false;
+            }
+            if (!Objects.equals(i1.next(), i2.next())) {
+                return false;
+            }
+        }
+        return true;
+    }
     
     @Override
     public String toString() {
