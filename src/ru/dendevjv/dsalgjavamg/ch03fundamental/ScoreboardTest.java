@@ -2,20 +2,10 @@ package ru.dendevjv.dsalgjavamg.ch03fundamental;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ScoreboardTest {
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() throws Exception {
-    }
-    
     @Test
     public void testGetTop() {
         Scoreboard board = new Scoreboard(3);

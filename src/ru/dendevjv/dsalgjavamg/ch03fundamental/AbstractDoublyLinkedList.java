@@ -1,6 +1,7 @@
 package ru.dendevjv.dsalgjavamg.ch03fundamental;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Objects;
 
 public abstract class AbstractDoublyLinkedList <E> extends AbstractLinkedList <E>
@@ -43,7 +44,7 @@ public abstract class AbstractDoublyLinkedList <E> extends AbstractLinkedList <E
 
         @Override
         public boolean hasNext() {
-            return current != null && current.getNext() != null;
+            return current != null && current.getElement() != null;
         }
 
         @Override
@@ -55,7 +56,74 @@ public abstract class AbstractDoublyLinkedList <E> extends AbstractLinkedList <E
 
         @Override
         public void remove() {
-            // does nothing
+            throw new UnsupportedOperationException("This method is not implemented yet");
+        }
+        
+    }
+    
+    protected class DoubleyLinkedListListIterator<T extends E> implements ListIterator<E> {
+        private Node<T> current;
+        
+        public DoubleyLinkedListListIterator(Node<T> firstNode) {
+            current = firstNode;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null && current.getElement() != null;
+        }
+
+        @Override
+        public E next() {
+            E element = current.getElement();
+            current = current.getNext();
+            return element;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            Node<T> prev = current.getPrev();
+            return prev != null && prev.getElement() != null;
+        }
+
+        @Override
+        public E previous() {
+            Node<T> prev = current.getPrev();
+            E element = prev.getElement();
+            current = prev;
+            return element;
+        }
+
+        @Override
+        public int nextIndex() {
+            throw new UnsupportedOperationException("This method is not implemented yet");
+        }
+
+        @Override
+        public int previousIndex() {
+            throw new UnsupportedOperationException("This method is not implemented yet");
+        }
+
+        @Override
+        public void remove() {
+            Node<T> nodeToRemove = current.getPrev();
+            Node<T> predecessor = nodeToRemove.getPrev();
+            Node<T> successor = current;
+            predecessor.setNext(successor);
+            successor.setPrev(predecessor);
+            nodeToRemove.setNext(null);
+            nodeToRemove.setPrev(null);
+            size--;
+        }
+
+        @Override
+        public void set(E e) {
+            throw new UnsupportedOperationException("This method is not implemented yet");
+        }
+
+        @Override
+        public void add(E e) {
+            throw new UnsupportedOperationException("This method is not implemented yet");
         }
         
     }
@@ -64,6 +132,8 @@ public abstract class AbstractDoublyLinkedList <E> extends AbstractLinkedList <E
     
     @Override
     public abstract Iterator<E> iterator();
+    
+    public abstract ListIterator<E> listIterator();
     
     @Override
     public boolean equals(Object obj) {

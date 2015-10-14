@@ -2,6 +2,8 @@ package ru.dendevjv.dsalgjavamg.ch03fundamental.p4doublylinked;
 
 import static org.junit.Assert.*;
 
+import java.util.ListIterator;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -95,5 +97,53 @@ public class DoublyLinkedListTest {
         assertEquals(Integer.valueOf(1), list.removeLast());
         assertEquals(Integer.valueOf(3), list.removeLast());
         assertEquals(0, list.getSize());
+    }
+    
+    @Test
+    public void testListIterator() {
+        int length = 4;
+        for (int i = 1; i <= length; i++) {
+            list.addLast(i);
+        }
+        
+        ListIterator<Integer> it1 = list.listIterator();
+        for (int i = 1; i <= length; i++) {
+            assertTrue(it1.hasNext());
+            Integer intObj = it1.next();
+            assertEquals(Integer.valueOf(i), intObj);
+        }
+        assertFalse(it1.hasNext());
+        
+        ListIterator<Integer> it2 = list.listIterator();
+        for (int i = 0; i < length; i++) {
+            it2.next();
+        }
+        assertFalse(it2.hasNext());
+        for (int i = length; i > 0; i--) {
+            assertTrue(it2.hasPrevious());
+            Integer intObj = it2.previous();
+            assertEquals(Integer.valueOf(i), intObj);
+        }
+        assertFalse(it2.hasPrevious());
+        
+        ListIterator<Integer> it3 = list.listIterator();
+        it3.next();
+        it3.remove();
+        assertEquals("[2, 3, 4]", list.toString());
+        it3.next();
+        it3.next();
+        it3.next();
+        it3.remove();
+        assertEquals("[2, 3]", list.toString());
+        it3.previous();
+        it3.previous();
+        it3.next();
+        it3.remove();
+        assertEquals("[3]", list.toString());
+        it3.next();
+        it3.remove();
+        assertEquals("[]", list.toString());
+        assertTrue(list.isEmpty());
+        
     }
 }

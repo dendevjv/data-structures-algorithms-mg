@@ -7,6 +7,7 @@
 package ru.dendevjv.dsalgjavamg.ch03fundamental.exercises;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 
 import ru.dendevjv.dsalgjavamg.ch03fundamental.AbstractDoublyLinkedList;
 
@@ -103,6 +104,11 @@ public class R0308DoublyLinkedList<E> extends AbstractDoublyLinkedList <E> {
         list.addFirst("One");
         System.out.println(list);
         System.out.println("middle: " + list.getMiddle());
+    }
+
+    @Override
+    public ListIterator<E> listIterator() {
+        return new DoubleyLinkedListListIterator<E>(header.getNext());
     }
 }
 

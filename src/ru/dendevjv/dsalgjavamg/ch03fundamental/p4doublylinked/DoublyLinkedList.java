@@ -1,6 +1,7 @@
 package ru.dendevjv.dsalgjavamg.ch03fundamental.p4doublylinked;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 
 import ru.dendevjv.dsalgjavamg.ch03fundamental.AbstractDoublyLinkedList;
 
@@ -69,5 +70,10 @@ public class DoublyLinkedList <E> extends AbstractDoublyLinkedList <E> {
     @Override
     public Iterator<E> iterator() {
         return new DoubleyLinkedListIterator<E>(header.getNext());
+    }
+
+    @Override
+    public ListIterator<E> listIterator() {
+        return new DoubleyLinkedListListIterator<E>(header.getNext());
     }
 }
