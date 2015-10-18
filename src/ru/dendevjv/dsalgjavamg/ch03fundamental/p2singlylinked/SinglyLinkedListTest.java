@@ -2,6 +2,8 @@ package ru.dendevjv.dsalgjavamg.ch03fundamental.p2singlylinked;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -136,5 +138,25 @@ public class SinglyLinkedListTest {
         assertEquals(list1, list2);
         assertEquals(list1.first(), list2.first());
         assertEquals(list1.last(), list2.last());
+    }
+    
+    @Test
+    public void testConcatenate() {
+        SinglyLinkedList<Integer> a = new SinglyLinkedList<>();
+        a.addLast(1);
+        a.addLast(2);
+        a.addLast(3);
+        SinglyLinkedList<Integer> b = new SinglyLinkedList<>();
+        b.addLast(4);
+        b.addLast(5);
+        b.addLast(6);
+        SinglyLinkedList<Integer> r = a.concatenate(b);
+        Iterator<Integer> it = r.iterator();
+        
+        assertEquals(r.getSize(), a.getSize() + b.getSize());
+        for (int i = 1; i <= 6; i++) {
+            assertTrue(it.hasNext());
+            assertEquals(Integer.valueOf(i), it.next());
+        }
     }
 }

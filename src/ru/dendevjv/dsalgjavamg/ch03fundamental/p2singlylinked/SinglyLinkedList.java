@@ -64,6 +64,25 @@ public class SinglyLinkedList <E> extends AbstractSynglyLinkedList <E>
         return answer;
     }
     
+    /**
+     * Creates a list containing all elements of the this list followed by all elements
+     * of the second list.
+     * @param b second list
+     * @return resulting list
+     */
+    public SinglyLinkedList<E> concatenate(SinglyLinkedList<E> b) {
+        SinglyLinkedList<E> r = new SinglyLinkedList<>();
+        Iterator<E> it1 = iterator();
+        while (it1.hasNext()) {
+            r.addLast(it1.next());
+        }
+        Iterator<E> it2 = b.iterator();
+        while (it2.hasNext()) {
+            r.addLast(it2.next());
+        }
+        return r;
+    }
+    
     @Override
     public Iterator<E> iterator() {
         return createIterator(head);
