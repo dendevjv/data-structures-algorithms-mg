@@ -2,6 +2,7 @@ package ru.dendevjv.dsalgjavamg.ch03fundamental.p4doublylinked;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
 import java.util.ListIterator;
 
 import org.junit.Before;
@@ -145,5 +146,24 @@ public class DoublyLinkedListTest {
         assertEquals("[]", list.toString());
         assertTrue(list.isEmpty());
         
+    }
+    
+    @Test
+    public void testConcatenate() {
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        DoublyLinkedList<Integer> list2 = new DoublyLinkedList<>();
+        list2.addLast(4);
+        list2.addLast(5);
+        list2.addLast(6);
+        
+        DoublyLinkedList<Integer> result = list.concatenate(list2);
+        assertEquals(list.getSize() + list2.getSize(), result.getSize());
+        Iterator<Integer> it = result.iterator(); 
+        for (int i = 1; i <= 6; i++) {
+            assertTrue(it.hasNext());
+            assertEquals(Integer.valueOf(i), it.next());
+        }
     }
 }

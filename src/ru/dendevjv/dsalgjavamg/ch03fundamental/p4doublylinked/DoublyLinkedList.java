@@ -76,4 +76,27 @@ public class DoublyLinkedList <E> extends AbstractDoublyLinkedList <E> {
     public ListIterator<E> listIterator() {
         return new DoubleyLinkedListListIterator<E>(header.getNext());
     }
+    
+    public DoublyLinkedList<E> concatenate(DoublyLinkedList<E> b) {
+        DoublyLinkedList<E> r = new DoublyLinkedList<>();
+        Node<E> node = header;
+        while (node.getNext() != null) {
+            node = node.getNext();
+            if (node.getElement() != null) {
+                r.addBetween(node.getElement(), r.trailer.getPrev(), r.trailer);
+            } else {
+                break;
+            }
+        }
+        node = b.header;
+        while (node.getNext() != null) {
+            node = node.getNext();
+            if (node.getElement() != null) {
+                r.addBetween(node.getElement(), r.trailer.getPrev(), r.trailer);
+            } else {
+                break;
+            }
+        }
+        return r;
+    }
 }
