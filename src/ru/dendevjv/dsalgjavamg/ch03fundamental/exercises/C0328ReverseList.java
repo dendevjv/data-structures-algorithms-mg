@@ -1,3 +1,8 @@
+/*
+    C-3.28 
+    Describe in detail an algorithm for reversing a singly linked list L using only a
+    constant amount of additional space.
+ */
 package ru.dendevjv.dsalgjavamg.ch03fundamental.exercises;
 
 public class C0328ReverseList {
