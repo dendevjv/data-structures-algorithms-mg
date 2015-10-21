@@ -64,7 +64,9 @@ public class C0332CircularyDoubleLinkedList <E> extends AbstractDoublyLinkedList
 
         @Override
         public void set(E e) {
-            throw new UnsupportedOperationException("This method is not implemented yet");
+            @SuppressWarnings("unchecked")
+            Node<E> prev = (Node<E>) current.getPrev();
+            prev.setElement(e);
         }
 
         @Override

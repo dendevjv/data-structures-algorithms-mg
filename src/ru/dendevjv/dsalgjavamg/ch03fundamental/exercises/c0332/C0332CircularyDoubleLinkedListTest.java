@@ -166,6 +166,31 @@ public class C0332CircularyDoubleLinkedListTest {
         assertEquals("[]", list.toString());
         assertTrue(list.isEmpty());
     }
+    
+    @Test
+    public void testListIteratorSet() {
+        int length = 4;
+        for (int i = 1; i <= length; i++) {
+            list.addLast(i);
+        }
+        assertEquals("[1, 2, 3, 4]", list.toString());
+        
+        ListIterator<Integer> it1 = list.listIterator();
+        it1.next();
+        it1.set(11);
+        assertEquals("[11, 2, 3, 4]", list.toString());
+        it1.next();
+        it1.set(22);
+        assertEquals("[11, 22, 3, 4]", list.toString());
+        it1.next();
+        it1.next();
+        it1.set(44);
+        assertEquals("[11, 22, 3, 44]", list.toString());
+        
+        it1.next();
+        it1.set(1);
+        assertEquals("[1, 22, 3, 44]", list.toString());
+    }
 
     @Test
     public void testRotate() {

@@ -26,6 +26,10 @@ public abstract class AbstractDoublyLinkedList <E> extends AbstractLinkedList <E
         
         public E getElement() { return element; }
         
+        public void setElement(E element) {
+            this.element = element;
+        }
+        
         public Node<E> getNext() { return next; }
         
         public Node<E> getPrev() { return previous; }
