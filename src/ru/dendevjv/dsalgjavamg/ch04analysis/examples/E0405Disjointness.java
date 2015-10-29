@@ -1,6 +1,6 @@
 package ru.dendevjv.dsalgjavamg.ch04analysis.examples;
 
-public class E0405 {
+public class E0405Disjointness {
 
     public static void main(String[] args) {
         int[] a = {1, 2, 3};
