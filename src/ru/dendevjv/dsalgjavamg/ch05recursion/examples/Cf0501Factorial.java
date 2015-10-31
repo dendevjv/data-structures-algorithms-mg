@@ -3,7 +3,7 @@ package ru.dendevjv.dsalgjavamg.ch05recursion.examples;
 
 import java.util.Scanner;
 
-public class Cf0501 {
+public class Cf0501Factorial {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
