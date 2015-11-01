@@ -2,5 +2,5 @@
 !.gitignore
 bin/
 *.class
-Tmp.java
+Tmp*.java
 TestSomething.java
