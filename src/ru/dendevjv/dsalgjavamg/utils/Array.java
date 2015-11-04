@@ -1,5 +1,6 @@
 package ru.dendevjv.dsalgjavamg.utils;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Array {
@@ -19,5 +20,17 @@ public class Array {
             a[i] = random.nextInt(upperBoundary);
         }
         return a;
+    }
+    
+    public static boolean allElementsUnique(int[] data) {
+        int[] a = Arrays.copyOf(data, data.length);
+        Arrays.sort(a);
+        int n = a.length - 1;
+        for (int i = 0; i < n; i++) {
+            if (a[i] == a[i + 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
