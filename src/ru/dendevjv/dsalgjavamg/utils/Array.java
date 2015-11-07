@@ -3,6 +3,10 @@ package ru.dendevjv.dsalgjavamg.utils;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Utility class contains methods for creating arrays, checking arrays and converting to strings.
+ * @author dendevjv
+ */
 public class Array {
     private static Random random = new Random();
     
