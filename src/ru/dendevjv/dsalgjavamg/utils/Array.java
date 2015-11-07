@@ -3,6 +3,10 @@ package ru.dendevjv.dsalgjavamg.utils;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Utility class contains methods for creating arrays, checking arrays and converting to strings.
+ * @author dendevjv
+ */
 public class Array {
     private static Random random = new Random();
     
@@ -52,5 +56,33 @@ public class Array {
         }
         sb.append(']');
         return sb.toString();
+    }
+    
+    /**
+     * Parses string representation of array into array of integers.
+     * @param arrayAsString string as returned by Arrays.toString(int[])
+     * @return array of integers
+     */
+    public static int[] parse(String arrayAsString) {
+        if (arrayAsString.startsWith("[")) {
+            arrayAsString = arrayAsString.substring(1);
+        }
+        if (arrayAsString.endsWith("]")) {
+            arrayAsString = arrayAsString.substring(0, arrayAsString.length() - 1);
+        }
+        String[] tokens = arrayAsString.split(",\\s");
+        int[] result = new int[tokens.length];
+        for (int i = 0; i < tokens.length; i++) {
+            result[i] = Integer.parseInt(tokens[i]);
+        }
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        String a = "[5, 5, 8, 1, 5, 9, 3, 2, 6, 5]";
+        int[] arr = parse(a);
+        for (int n : arr) {
+            System.out.println(n);
+        }
     }
 }
