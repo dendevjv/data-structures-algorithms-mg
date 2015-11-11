@@ -45,9 +45,6 @@ public class C0521Partitioning {
         partition(a, k, 0, a.length - 1);
     }
     
-    /*
-     * 
-     */
     private static void partition(int[] a, int k, int lo, int hi) {
         if (lo < hi) {
             int left = a[lo];

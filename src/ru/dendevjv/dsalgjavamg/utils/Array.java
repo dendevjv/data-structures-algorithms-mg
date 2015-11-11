@@ -26,6 +26,35 @@ public class Array {
         return a;
     }
     
+    public static int[] ofRandomDistinctElements(int size, int upperBoundary) {
+        if (upperBoundary < size) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Value of upper boundary (%d) must not be less than size of array (%d)",
+                            upperBoundary, size));
+        }
+        int[] a = new int [size];
+        int value;
+        boolean foundDuplicate, foundDistinct;
+        for (int i = 0; i < size; i++) {
+            foundDistinct = false;
+            while (!foundDistinct) {
+                value = random.nextInt(upperBoundary);
+                foundDuplicate = false;
+                for (int j = 0; !foundDuplicate && j < i; j++) {
+                    if (a[j] == value) {
+                        foundDuplicate = true;
+                    }
+                }
+                if (!foundDuplicate) {
+                    a[i] = value;
+                    foundDistinct = true;
+                }
+            }
+        }
+        return a;
+    }
+    
     public static boolean allElementsUnique(int[] data) {
         int[] a = Arrays.copyOf(data, data.length);
         Arrays.sort(a);
@@ -79,10 +108,8 @@ public class Array {
     }
     
     public static void main(String[] args) {
-        String a = "[5, 5, 8, 1, 5, 9, 3, 2, 6, 5]";
-        int[] arr = parse(a);
-        for (int n : arr) {
-            System.out.println(n);
-        }
+        int[] a = ofRandomDistinctElements(20, 40);
+        Arrays.sort(a);
+        System.out.println(Arrays.toString(a));
     }
 }
