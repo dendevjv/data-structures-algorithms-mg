@@ -88,6 +88,26 @@ public class Array {
     }
     
     /**
+     * Returns the string containing <code>length</code> elements of array.
+     * @param data array of objects
+     * @param length number of elements to include in the resulting string
+     * @return string of the form as returned in <code>java.util.Arrays.toString</code>
+     */
+    public static String toString(Object[] data, int length) {
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        if (length > 0) {
+            sb.append(data[0]);
+        }
+        for (int i = 1; i < length; i++) {
+            sb.append(", ");
+            sb.append(data[i]);
+        }
+        sb.append(']');
+        return sb.toString();
+    }
+    
+    /**
      * Parses string representation of array into array of integers.
      * @param arrayAsString string as returned by Arrays.toString(int[])
      * @return array of integers
