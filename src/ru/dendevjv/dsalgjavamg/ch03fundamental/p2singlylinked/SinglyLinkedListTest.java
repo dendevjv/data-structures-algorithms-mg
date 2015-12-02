@@ -159,4 +159,16 @@ public class SinglyLinkedListTest {
             assertEquals(Integer.valueOf(i), it.next());
         }
     }
+    
+    @Test
+    public void testToString() {
+        SinglyLinkedList<Integer> a = new SinglyLinkedList<>();
+        assertEquals("[]", a.toString());
+        a.addLast(1);
+        assertEquals("[1]", a.toString());
+        a.addLast(2);
+        assertEquals("[1, 2]", a.toString());
+        a.addFirst(0);
+        assertEquals("[0, 1, 2]", a.toString());
+    }
 }

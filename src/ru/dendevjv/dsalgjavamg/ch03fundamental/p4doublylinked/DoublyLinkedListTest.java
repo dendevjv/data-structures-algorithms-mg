@@ -166,4 +166,15 @@ public class DoublyLinkedListTest {
             assertEquals(Integer.valueOf(i), it.next());
         }
     }
+    
+    @Test
+    public void testToString() {
+        assertEquals("[]", list.toString());
+        list.addLast(1);
+        assertEquals("[1]", list.toString());
+        list.addLast(2);
+        assertEquals("[1, 2]", list.toString());
+        list.addFirst(0);
+        assertEquals("[0, 1, 2]", list.toString());
+    }
 }
