@@ -2,12 +2,12 @@ package ru.dendevjv.dsalgjavamg.ch02.exercises;
 
 import ru.dendevjv.dsalgjavamg.ch01.CreditCard;
 
-public class Ñ0218PredatoryCreditCard extends CreditCard {
+public class C0218PredatoryCreditCard extends CreditCard {
     /** Annual percentage rate. */
     private double apr;
     private int chargeCount;
 
-    public Ñ0218PredatoryCreditCard(String cust, String bk, String acnt, int lim,
+    public C0218PredatoryCreditCard(String cust, String bk, String acnt, int lim,
             double initialBal, double rate) {
         super(cust, bk, acnt, lim, initialBal);
         apr = rate;
