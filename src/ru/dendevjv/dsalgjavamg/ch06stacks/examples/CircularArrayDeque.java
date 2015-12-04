@@ -43,7 +43,7 @@ public class CircularArrayDeque <E> implements Deque<E> {
     @Override
     public void addFirst(E e) {
         checkCapacity();
-        first = (first == 0) ? data.length - 1: first - 1;
+        first = (first - 1 + data.length) % data.length;
         data[first] = e;
         size++;
     }
