@@ -15,6 +15,13 @@ public abstract class DequeTest {
     
     protected Deque<Integer> deque;
 
+    /**
+     * Creating tested object <code>deque</code>. 
+     * This method must be implemented in every test class. 
+     * @param capacity capacity of deque if implementation data structure has fixed capacity,
+     *      otherwise it is not used
+     * @throws Exception
+     */
     public abstract void createDeque(int capacity) throws Exception;
     
     @Before
