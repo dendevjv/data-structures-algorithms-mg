@@ -34,4 +34,8 @@ public class Cf0604LinkedStack<E> implements Stack<E> {
         return list.removeFirst();
     }
 
+    @Override
+    public String toString() {
+        return list.toString();
+    }
 }

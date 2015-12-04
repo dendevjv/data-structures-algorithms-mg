@@ -9,18 +9,18 @@ public class Cf0610ArrayQueue<E> implements Queue<E> {
     /**
      * Underlying array.
      */
-    private E[] data;
+    protected E[] data;
     /**
      * Index of the first element in the queue.
      */
-    private int first;
+    protected int first;
     /**
      * Current number of elements stored in the queue.
      */
-    private int size;
+    protected int size;
     
     @SuppressWarnings("unchecked")
-    Cf0610ArrayQueue(int capacity) {
+    protected Cf0610ArrayQueue(int capacity) {
         data = (E[])new Object[capacity];
         first = 0;
         size = 0;
@@ -63,6 +63,23 @@ public class Cf0610ArrayQueue<E> implements Queue<E> {
         first = (first + 1) % data.length;
         size--;
         return e;
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        if (size > 0) {
+            int j = first;
+            sb.append(data[j]);
+            for (int i = 1; i < size; i++) {
+                j = (j + 1) % data.length;
+                sb.append(", ");
+                sb.append(data[j]);
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 
     public static void main(String[] args) {
